@@ -1,11 +1,11 @@
-#define trigPin_FL 5
-#define echoPin_FL 6
+#define trigPin_FL 5  //yeelow
+#define echoPin_FL 6  //green
 
-#define trigPin_F 8
-#define echoPin_F 9
+#define trigPin_F 8   //blue
+#define echoPin_F 9   //grey
 
-#define trigPin_FR 4
-#define echoPin_FR 3
+#define trigPin_FR 4  //white
+#define echoPin_FR 3  //green
 
 int FL, F, FR, Id;
 bool sendMessage= false;
