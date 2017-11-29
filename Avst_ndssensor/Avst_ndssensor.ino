@@ -48,8 +48,10 @@ void loop() {
   if(sendMessage){
     sendMessage=false;
     can.SendData();
+    can.ClearData();
     }     
- delay(200);
+ delay(500);
+ Serial.println("********************************");
 }
 int Read_Distance(int trigPin, int echoPin){
   
