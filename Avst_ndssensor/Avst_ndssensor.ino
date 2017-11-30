@@ -9,14 +9,13 @@
 
 #include <mcp_can.h>
 #include <SPI.h>
-#include <CANBuss.h>
 
 int FL, F, FR, Id;
 bool sendMessage= false;
 long tStart, tEnd, Time, duration, distance;
-CANBuss can;
+char Data[8]={0, 0, 0, 0, 0, 0, 0, 0};
 void setup() {
-  can.sendId=5;
+  SetupCANBuss();
   Serial.begin (500000);
   pinMode(trigPin_FL, OUTPUT);
   pinMode(echoPin_FL, INPUT);  
@@ -33,22 +32,27 @@ void loop() {
   FR=Read_Distance(trigPin_FR,echoPin_FR);
 
   if(FL>0 && FL <=200){
-    can.data[0]=FL;
+    Data[0]=FL;
     sendMessage=true;
     }
   if(F>0 && F <=200){
-    can.data[1]=F;
+    Data[1]=F;
     sendMessage=true;
     }
   if(FR>0 && FR <=200){
     sendMessage=true;
-    can.data[2]=FR;
+    Data[2]=FR;
     }
       
   if(sendMessage){
+    setData(Data);
     sendMessage=false;
-    can.SendData();
-    can.ClearData();
+    SendData();
+    Serial.print("Sent message: ");
+    printdata();
+    Serial.println();
+    ClearData();
+    printdata();
     }     
  delay(500);
  Serial.println("********************************");
@@ -76,7 +80,11 @@ int Read_Distance(int trigPin, int echoPin){
   
 
  
+void ClearData(){
 
+    for(int i=0;i<8;i++)
+      Data[i]=0x00;
+} 
 
 
 
