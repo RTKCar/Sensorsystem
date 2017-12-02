@@ -7,9 +7,6 @@
 #define trigPin_FR 4  //white
 #define echoPin_FR 3  //green
 
-#include <mcp_can.h>
-#include <SPI.h>
-
 int FL, F, FR, Id;
 bool sendMessage= false;
 long tStart, tEnd, Time, duration, distance;
