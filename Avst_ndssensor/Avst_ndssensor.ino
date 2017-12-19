@@ -13,6 +13,7 @@ long tStart, tEnd, Time, duration, distance;
 char Data[8]={0, 0, 0, 0, 0, 0, 0, 0};
 void setup() {
   SetupCANBuss();
+  setSendId(15);
   Serial.begin (500000);
   pinMode(trigPin_FL, OUTPUT);
   pinMode(echoPin_FL, INPUT);  
@@ -45,14 +46,14 @@ void loop() {
     setData(Data);
     sendMessage=false;
     SendData();
-    Serial.print("Sent message: ");
+  //  Serial.print("Sent message: ");
     printdata();
     Serial.println();
     ClearData();
-    printdata();
+  //  printdata();
     }     
- delay(500);
- Serial.println("********************************");
+ delay(100);
+ //Serial.println("********************************");
 }
 int Read_Distance(int trigPin, int echoPin){
   
@@ -66,10 +67,10 @@ int Read_Distance(int trigPin, int echoPin){
   distance= duration*0.034/2;
   tEnd=millis();
   Time=tEnd-tStart;
-  Serial.print("Distance: ");
+  /*Serial.print("Distance: ");
   Serial.println(distance);
   Serial.print("Time: ");
-  Serial.println(Time);
+  Serial.println(Time);*/
   
   return distance;
   

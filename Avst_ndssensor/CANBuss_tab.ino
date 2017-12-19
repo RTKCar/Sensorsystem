@@ -81,7 +81,7 @@ void SendData(){
   // send data:  ID = 0x100, Standard CAN Frame, Data length = 8 bytes, 'data' = array of data bytes to send
   byte sndStat = CAN0.sendMsgBuf(sendId, 0, 8, data);
   if(sndStat == CAN_OK){
-    Serial.println("Message Sent Successfully!");
+  //  Serial.println("Message Sent Successfully!");
   } else {
     Serial.println("Error Sending Message...");
   }
@@ -92,10 +92,13 @@ void setData(char Data[]){
   
   }
 void printdata(){
-  for(int i=0;i<8;i++){
-    Serial.print(data[i]);
-    Serial.print(":");
+  String S;
+  for(int i=0;i<7;i++){
+    S=S+data[i]+":";
+    
   }
+  S=S+data[7];
+  Serial.println(S);
   
   }  
 
