@@ -1,3 +1,11 @@
+/*Adresser för delsystem
+styrsystem: 10
+sensorsystem: 15
+huvudenheten:5
+drivsystem:6
+
+*/
+
 //***CAN-Buss variabes**
 #include <mcp_can.h>
 #include <SPI.h>
